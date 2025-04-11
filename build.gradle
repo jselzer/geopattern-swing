@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.selzerj:geopattern:0.0-SNAPSHOT'
+    implementation 'com.selzerj:geopattern:0.0.1-SNAPSHOT'
     implementation 'org.apache.xmlgraphics:batik-transcoder:1.18'
     implementation 'org.apache.xmlgraphics:batik-codec:1.18'
 }
