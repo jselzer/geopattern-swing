@@ -9,7 +9,6 @@ import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.ImageTranscoder;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -17,6 +16,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -34,26 +34,24 @@ public class Main {
 	}
 
 	public Main() {
-		JFrame frame = new JFrame("Hello World Java Swing");
+		JFrame frame = new JFrame("Geopattern example app");
 
-		// set frame site
 		frame.setMinimumSize(new Dimension(800, 600));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		// center the JLabel
-		JLabel lblText = new JLabel("Type something!", SwingConstants.CENTER);
-		JTextField seedField = new JTextField("Jason");
+		JTextField seedField = new JTextField("Type something!", 20);
+		seedField.setOpaque(false);
+		seedField.setBackground(new Color(0, 0, 0, 0));
+		seedField.setBorder(null);
+		seedField.setHorizontalAlignment(SwingConstants.CENTER);
 		seedField.getDocument().addDocumentListener(new MyDocumentListener());
 		geoPatternPane = new GeoPatternPane(generateSvg(seedField.getText()));
 		frame.getContentPane().add(geoPatternPane);
 
-		geoPatternPane.add(lblText);
 		geoPatternPane.add(seedField);
 
-		// display it
 		frame.pack();
 		frame.setVisible(true);
-
 	}
 
 	private String generateSvg(String seed) {
@@ -61,9 +59,7 @@ public class Main {
 		return result.toSvg();
 	}
 
-
 	public class GeoPatternPane extends JPanel {
-
 		private BufferedImage tile;
 
 		public GeoPatternPane(String svgContent) {
@@ -134,9 +130,6 @@ public class Main {
 		public void updatePattern(DocumentEvent e) {
 			Document doc = e.getDocument();
 			String value = getValue(doc);
-
-			System.out.println(value);
-
 			geoPatternPane.convertToImg(generateSvg(value));
 			geoPatternPane.repaint();
 		}
