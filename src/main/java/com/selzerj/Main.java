@@ -1,8 +1,8 @@
 package com.selzerj;
 
 
-import com.selzerj.geopattern.PatternGenerator;
-import com.selzerj.geopattern.pattern.Pattern;
+import io.github.jselzer.geopattern.PatternGenerator;
+import io.github.jselzer.geopattern.model.Pattern;
 import org.apache.batik.transcoder.TranscoderException;
 import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
