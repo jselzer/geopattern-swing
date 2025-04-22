@@ -1,4 +1,4 @@
-package com.selzerj;
+package io.github.jselzer;
 
 
 import io.github.jselzer.geopattern.PatternGenerator;
